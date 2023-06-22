@@ -45,4 +45,9 @@ public class AddItemActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void returnMenu(View view){
+        Intent intent = new Intent(AddItemActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 }
