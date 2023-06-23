@@ -57,8 +57,8 @@
         android:text="Meu Carrinho"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold">
-    </Button>
+        android:textStyle="bold"></Button>
+
     <Button
         android:id="@+id/btn_exit"
         android:layout_width="match_parent"
@@ -70,7 +70,6 @@
         android:text="Sair"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold">
-    </Button>
+        android:textStyle="bold"></Button>
 </LinearLayout>
 </ScrollView>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        recyclerView = findViewById(R.id.RecyclerViewerMenu);
+//        recyclerView = findViewById(R.id.RecyclerViewItens);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //
 //        databaseHelper = new DatabaseHelper(this);
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void listItem(View view){
-        Intent intent = new Intent(MainActivity.this, GroceryListAdapter.class);
+        Intent intent = new Intent(MainActivity.this, ItemList.class);
         startActivity(intent);
     }
 

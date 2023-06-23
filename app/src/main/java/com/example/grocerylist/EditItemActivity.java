@@ -22,8 +22,8 @@ public class EditItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_item);
 
-        edtItemName = findViewById(R.id.edtItemName);
-        edtItemQuantity = findViewById(R.id.edtItemQuantity);
+        edtItemName = findViewById(R.id.editItemName);
+        edtItemQuantity = findViewById(R.id.editItemQuantity);
         btnUpdateItem = findViewById(R.id.btnUpdateItem);
         btnDeleteItem = findViewById(R.id.btnDeleteItem);
 
@@ -67,5 +67,10 @@ public class EditItemActivity extends AppCompatActivity {
         databaseHelper.deleteGroceryItem(currentItem);
 
         finish();
+    }
+
+    private void returnItemList(View view){
+        Intent intent = new Intent(EditItemActivity.this, ItemList.class);
+        startActivity(intent);
     }
 }

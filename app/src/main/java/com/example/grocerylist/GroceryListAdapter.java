@@ -1,6 +1,7 @@
 package com.example.grocerylist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,14 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListAdapter.
         GroceryItem groceryItem = groceryItems.get(position);
         holder.txtItemName.setText(groceryItem.getName());
         holder.txtItemQuantity.setText(String.valueOf(groceryItem.getQuantity()));
+
+        holder.txtItemName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, EditItemActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -45,8 +54,8 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListAdapter.
 
         public GroceryViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtItemName = itemView.findViewById(R.id.txtItemName);
-            txtItemQuantity = itemView.findViewById(R.id.txtItemQuantity);
+            txtItemName = itemView.findViewById(R.id.itemNameList);
+            txtItemQuantity = itemView.findViewById(R.id.itemQuantityList);
         }
     }
 }
