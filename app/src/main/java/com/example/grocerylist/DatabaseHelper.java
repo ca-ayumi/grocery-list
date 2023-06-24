@@ -65,13 +65,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return itemList;
     }
 
-    public void updateGroceryItem(GroceryItem item) {
+    public int updateGroceryItem(GroceryItem item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, item.getName());
         values.put(COLUMN_QUANTITY, item.getQuantity());
-        db.update(TABLE_NAME, values, COLUMN_ID + "=?", new String[]{String.valueOf(item.getId())});
+        int rowsAffected = db.update(TABLE_NAME, values, COLUMN_ID + "=?", new String[]{item.getId()});
         db.close();
+        return rowsAffected;
     }
 
     public void deleteGroceryItem(GroceryItem item) {

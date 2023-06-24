@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,11 +39,9 @@ public class EditItemActivity extends AppCompatActivity {
 
         btnUpdateItem.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                updateItem();
+            public void onClick(View v) { updateItem();
             }
         });
-
         btnDeleteItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +57,13 @@ public class EditItemActivity extends AppCompatActivity {
         currentItem.setName(name);
         currentItem.setQuantity(quantity);
 
-        databaseHelper.updateGroceryItem(currentItem);
+        int rowsAffected = databaseHelper.updateGroceryItem(currentItem);
+
+        if (rowsAffected > 0) {
+            Toast.makeText(EditItemActivity.this, "Item atualizado com sucesso", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(EditItemActivity.this, "Falha ao atualizar o item", Toast.LENGTH_SHORT).show();
+        }
 
         finish();
     }

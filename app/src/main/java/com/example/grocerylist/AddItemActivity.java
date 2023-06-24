@@ -37,6 +37,13 @@ public class AddItemActivity extends AppCompatActivity {
 
                 GroceryItem item = new GroceryItem(id, name, quantity);
 
+                // Salvar o item no banco de dados
+                long result = databaseHelper.insertGroceryItem(item);
+                if (result != -1) {
+                    Toast.makeText(AddItemActivity.this, "Item adicionado com sucesso", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(AddItemActivity.this, "Erro ao adicionar o item", Toast.LENGTH_SHORT).show();
+                }
 
                 Intent intent = new Intent();
                 intent.putExtra("item", (CharSequence) item);

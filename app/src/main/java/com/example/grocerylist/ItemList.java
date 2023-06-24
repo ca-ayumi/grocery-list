@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +22,11 @@ public class ItemList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
 
-        // Lista de Teste
-        List<GroceryItem> lista = new ArrayList<>();
-        lista.add(new GroceryItem("1", "Item 1",10));
-        lista.add(new GroceryItem("2", "Item 2",3));
-        lista.add(new GroceryItem("3", "Item 3",52));
+//        // Lista de Teste
+//        List<GroceryItem> lista = new ArrayList<>();
+//        lista.add(new GroceryItem("1", "Item 1",10));
+//        lista.add(new GroceryItem("2", "Item 2",3));
+//        lista.add(new GroceryItem("3", "Item 3",52));
 
         recyclerView = findViewById(R.id.RecyclerViewItens);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -32,7 +34,8 @@ public class ItemList extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper(this);
         itemList = databaseHelper.getAllGroceryItems();
-        adapter = new GroceryListAdapter(lista, this);
+//        adapter = new GroceryListAdapter(lista, this);
+        adapter = new GroceryListAdapter(itemList, this);
         recyclerView.setAdapter(adapter);
     }
 }
