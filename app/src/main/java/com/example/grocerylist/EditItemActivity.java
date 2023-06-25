@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ public class EditItemActivity extends AppCompatActivity {
     private Button btnUpdateItem;
     private Button btnDeleteItem;
     private String itemId;
+    ImageView returnButton;
 
     private DatabaseHelper databaseHelper;
     private GroceryItem currentItem;
@@ -28,6 +30,7 @@ public class EditItemActivity extends AppCompatActivity {
         edtItemQuantity = findViewById(R.id.editItemQuantity);
         btnUpdateItem = findViewById(R.id.btnUpdateItem);
         btnDeleteItem = findViewById(R.id.btnDeleteItem);
+        returnButton = findViewById(R.id.ic_return);
 
         String itemName = getIntent().getStringExtra("ItemName");
         String itemQuantity = getIntent().getStringExtra("ItemQuantity");
@@ -51,6 +54,17 @@ public class EditItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 deleteItem();
+
+                Intent intent = new Intent(EditItemActivity.this, ItemList.class);
+                startActivity(intent);
+            }
+        });
+
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EditItemActivity.this, ItemList.class);
+                startActivity(intent);
             }
         });
     }
@@ -73,13 +87,8 @@ public class EditItemActivity extends AppCompatActivity {
     }
 
     private void deleteItem() {
-        databaseHelper.deleteGroceryItem(currentItem);
+        databaseHelper.deleteGroceryItem(itemId);
 
         finish();
-    }
-
-    private void returnItemList(View view){
-        Intent intent = new Intent(EditItemActivity.this, ItemList.class);
-        startActivity(intent);
     }
 }

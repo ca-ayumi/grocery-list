@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ public class AddItemActivity extends AppCompatActivity {
     private EditText edtItemQuantity;
     private Button btnAddItem;
     private DatabaseHelper databaseHelper;
+    ImageView returnButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class AddItemActivity extends AppCompatActivity {
         edtItemName = findViewById(R.id.edtItemName);
         edtItemQuantity = findViewById(R.id.edtItemQuantity);
         btnAddItem = findViewById(R.id.btnAddItem);
+        returnButton = findViewById(R.id.ic_return);
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -51,10 +54,13 @@ public class AddItemActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
 
-    public void returnMenu(View view){
-        Intent intent = new Intent(AddItemActivity.this, MainActivity.class);
-        startActivity(intent);
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddItemActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

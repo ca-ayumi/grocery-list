@@ -75,9 +75,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return rowsAffected;
     }
 
-    public void deleteGroceryItem(GroceryItem item) {
+    public void deleteGroceryItem(String itemId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, COLUMN_ID + "=?", new String[]{String.valueOf(item.getId())});
+        db.delete(TABLE_NAME, COLUMN_ID + "=?", new String[]{String.valueOf(itemId)});
         db.close();
     }
 }

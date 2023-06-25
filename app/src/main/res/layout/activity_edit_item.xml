@@ -4,19 +4,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/background">
+    android:background="@color/white">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/AppBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/toolbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            </Toolbar>
+
+            <ImageView
+                android:id="@+id/ic_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                app:layout_constraintTop_toTopOf="@id/toolbar"
+                app:layout_constraintStart_toStartOf="@id/toolbar"
+                app:layout_constraintBottom_toBottomOf="@id/toolbar"
+                android:layout_marginStart="10dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="@string/edit_product_toolbar_title"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/toolbar"
+                app:layout_constraintStart_toEndOf="@id/ic_return"
+                app:layout_constraintTop_toTopOf="@id/toolbar"
+                tools:ignore="TextContrastCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/editItemTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Editar Produto"
-        android:textStyle="bold"
+        android:text="@string/edit_product_explanation_text"
         android:textColor="@color/black"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:layout_marginTop="60dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="18sp"
+        android:gravity="start"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/AppBarLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
     </TextView>
@@ -35,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textStyle="bold"
-        android:text="Item Name"
+        android:text="@string/edit_product_name_text"
         app:layout_constraintStart_toStartOf="@+id/editItemName"
         app:layout_constraintTop_toTopOf="@+id/ContainerEditItem">
     </TextView>
@@ -46,14 +97,14 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="@+id/ContainerEditItem"
         app:layout_constraintStart_toStartOf="@+id/ContainerEditItem"
-        app:layout_constraintTop_toBottomOf="@+id/textEditItemName" />
+        app:layout_constraintTop_toBottomOf="@+id/textEditItemName"/>
 
     <TextView
         android:id="@+id/textEditItemQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Quantity"
+        android:text="@string/edit_product_quantity_text"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/editItemQuantity"
         app:layout_constraintTop_toBottomOf="@+id/editItemName" />
@@ -64,14 +115,16 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="@+id/ContainerEditItem"
         app:layout_constraintStart_toStartOf="@+id/ContainerEditItem"
-        app:layout_constraintTop_toBottomOf="@+id/textEditItemQuantity" />
+        app:layout_constraintTop_toBottomOf="@+id/textEditItemQuantity"
+        tools:ignore="Autofill" />
 
     <Button
         android:id="@+id/btnUpdateItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Atualizar Item"
+        android:text="@string/edit_product_btn_atualizar"
+        android:backgroundTint="@color/skyblue"
         android:onClick="updateItem"
         app:layout_constraintEnd_toEndOf="@+id/editItemQuantity"
         app:layout_constraintTop_toBottomOf="@+id/editItemQuantity"/>
@@ -80,20 +133,12 @@
         android:id="@+id/btnDeleteItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
         android:layout_marginTop="16dp"
-        android:layout_marginRight="10dp"
-        android:text="Excluir"
-        app:layout_constraintTop_toBottomOf="@+id/editItemQuantity"
-        app:layout_constraintRight_toLeftOf="@+id/btnUpdateItem"/>
-
-    <Button
-        android:id="@+id/btnReturnList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Voltar"
-        android:onClick="returnItemList"
-        app:layout_constraintBottom_toBottomOf="@+id/ContainerEditItem"
-        app:layout_constraintEnd_toEndOf="@+id/btnUpdateItem"/>
+        android:layout_marginEnd="10dp"
+        android:onClick="deleteItem"
+        android:text="@string/edit_product_btn_delete"
+        app:layout_constraintStart_toStartOf="@+id/editItemQuantity"
+        app:layout_constraintTop_toBottomOf="@+id/editItemQuantity"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

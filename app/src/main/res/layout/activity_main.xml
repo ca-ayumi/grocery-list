@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Shopping List"
+        android:text="@string/menu_app_title_text"
         android:textColor="@color/black"
         android:textSize="36sp"
         android:textStyle="bold"
@@ -40,7 +40,7 @@
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="20dp"
         android:onClick="addItem"
-        android:text="Adicionar Item"
+        android:text="@string/menu_btn_novo_produto"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold">
@@ -54,10 +54,10 @@
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="20dp"
         android:onClick="listItem"
-        android:text="Meu Carrinho"
+        android:text="@string/menu_btn_meu_carrinho"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold"></Button>
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_exit"
@@ -67,9 +67,9 @@
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="20dp"
         android:onClick="closeApp"
-        android:text="Sair"
+        android:text="@string/menu_btn_sair"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold"></Button>
+        android:textStyle="bold" />
 </LinearLayout>
 </ScrollView>

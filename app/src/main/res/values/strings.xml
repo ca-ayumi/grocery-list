@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Grocery List</string>
+    <string name="add_product_explanation_text">Insira o nome e quantidade do produto que deseja adicionar a lista.</string>
+    <string name="add_product_toolbar_title">Novo Produto</string>
+    <string name="add_product_name_text">Nome do Produto</string>
+    <string name="add_product_quantity_text">Quantidade</string>
+    <string name="add_product_btn_text">Adicionar</string>
+    <string name="add_product_name_hint">Digite o nome do produto</string>
+    <string name="add_product_hint_quantity">Digite a quantidade do produto</string>
+    <string name="edit_product_toolbar_title">Editar Produto</string>
+    <string name="edit_product_explanation_text">Digite um novo nome ou uma nova quantidade para o produto.</string>
+    <string name="edit_product_name_text">Nome do Produto</string>
+    <string name="edit_product_quantity_text">Quantidade</string>
+    <string name="edit_product_btn_atualizar">Atualizar Item</string>
+    <string name="edit_product_btn_delete">Excluir</string>
+    <string name="item_list_toolbar_title">Meus produtos</string>
+    <string name="menu_btn_meu_carrinho">Meu Carrinho</string>
+    <string name="menu_btn_novo_produto">Novo Produto</string>
+    <string name="menu_btn_sair">Sair</string>
+    <string name="menu_app_title_text">Shopping List</string>
 </resources>
