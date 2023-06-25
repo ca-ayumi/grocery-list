@@ -38,6 +38,9 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListAdapter.
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, EditItemActivity.class);
+                intent.putExtra("ItemName", groceryItem.getName());
+                intent.putExtra("ItemQuantity", String.valueOf(groceryItem.getQuantity()));
+                intent.putExtra("ItemId", groceryItem.getId());
                 context.startActivity(intent);
             }
         });

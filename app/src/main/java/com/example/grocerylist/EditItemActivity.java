@@ -14,6 +14,7 @@ public class EditItemActivity extends AppCompatActivity {
     private EditText edtItemQuantity;
     private Button btnUpdateItem;
     private Button btnDeleteItem;
+    private String itemId;
 
     private DatabaseHelper databaseHelper;
     private GroceryItem currentItem;
@@ -28,18 +29,22 @@ public class EditItemActivity extends AppCompatActivity {
         btnUpdateItem = findViewById(R.id.btnUpdateItem);
         btnDeleteItem = findViewById(R.id.btnDeleteItem);
 
-        databaseHelper = new DatabaseHelper(this);
+        String itemName = getIntent().getStringExtra("ItemName");
+        String itemQuantity = getIntent().getStringExtra("ItemQuantity");
+        itemId = getIntent().getStringExtra("ItemId");
 
-        Intent intent = getIntent();
-        if (intent.hasExtra("item")) {
-            currentItem = intent.getParcelableExtra("item");
-            edtItemName.setText(currentItem.getName());
-            edtItemQuantity.setText(String.valueOf(currentItem.getQuantity()));
-        }
+        edtItemName.setText(itemName);
+        edtItemQuantity.setText(itemQuantity);
+
+        databaseHelper = new DatabaseHelper(this);
 
         btnUpdateItem.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { updateItem();
+            public void onClick(View v) {
+                updateItem();
+
+                Intent intent = new Intent(EditItemActivity.this, ItemList.class);
+                startActivity(intent);
             }
         });
         btnDeleteItem.setOnClickListener(new View.OnClickListener() {
@@ -54,8 +59,7 @@ public class EditItemActivity extends AppCompatActivity {
         String name = edtItemName.getText().toString().trim();
         int quantity = Integer.parseInt(edtItemQuantity.getText().toString().trim());
 
-        currentItem.setName(name);
-        currentItem.setQuantity(quantity);
+        currentItem = new GroceryItem(itemId, name, quantity);
 
         int rowsAffected = databaseHelper.updateGroceryItem(currentItem);
 
